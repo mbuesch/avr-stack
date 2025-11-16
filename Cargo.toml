@@ -1,0 +1,21 @@
+# -*- coding: utf-8 -*-
+
+[package]
+name = "avr-stack"
+description = "Stack analysis for AVR"
+version = "1.0.0"
+authors = [ "Michael Büsch <m@bues.ch>" ]
+edition = "2024"
+license = "MIT OR Apache-2.0"
+homepage = "https://bues.ch/"
+repository = "https://github.com/mbuesch/avr-stack"
+readme = "README.md"
+categories = [ "embedded", "hardware-support", "no-std" ]
+keywords = [ "avr", "stack" ]
+
+[dependencies]
+
+[features]
+default = []
+
+# vim: ts=4 sw=4 expandtab
