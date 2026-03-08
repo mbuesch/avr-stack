@@ -76,9 +76,10 @@ fn avr_estimate_unused_stack_space() -> u16 {
             "   ld r19, X+",                            // read the stack byte and inc X
             "   cpi r19, {PATTERN}",                    // check if the read bytes still matches PATTERN
             "   breq 1b",                               // if it matches, go on searching
-            "2: movw {nrbytes}, r26",                   // first mismatch. Copy X
-            "   subi {nrbytes:l}, lo8(__bss_end + 1)",  // number of bytes is X minus stack-end minus 1
-            "   sbci {nrbytes:h}, hi8(__bss_end + 1)",  // ...
+            "   sbiw r26, 1",                           // undo post-increment on mismatch
+            "2: movw {nrbytes}, r26",                   // copy X (points to last matched address)
+            "   subi {nrbytes:l}, lo8(__bss_end)",      // number of bytes is X minus stack-end
+            "   sbci {nrbytes:h}, hi8(__bss_end)",      // ...
 
             nrbytes = out(reg_pair) nrbytes,            // nrbytes is output only
 
