@@ -12,7 +12,7 @@
 //! The main crate must call the [init_stack_pattern] macro once
 //! to define the stack initialization function.
 //!
-//! On init, all of the stack space is overwritten with a byte [PATTERN] by the macro.
+//! On initialization, all of the stack space is overwritten with a byte [PATTERN] by the macro.
 //! The code that does this runs from the linker section `.init4`.
 
 #![cfg_attr(not(test), no_std)]
@@ -25,8 +25,8 @@ pub const PATTERN: u8 = 0x5A;
 
 /// Define an `.init4` function to initialize the stack.
 ///
-/// This macro shall be called once from the main crate to define
-/// an `.init4` function to overwrite the whole stack with [PATTERN].
+/// This macro should be called once from the main crate to define
+/// an `.init4` function to overwrite the entire stack with [PATTERN].
 #[macro_export]
 macro_rules! init_stack_pattern {
     () => {
@@ -34,10 +34,10 @@ macro_rules! init_stack_pattern {
         #[unsafe(naked)]
         #[unsafe(no_mangle)]
         #[unsafe(link_section = ".init4")]
-        /// Overwrite the whole stack with the [PATTERN].
+        /// Overwrite the entire stack with the [PATTERN].
         ///
         /// The stack grows downwards.
-        /// Start from stack end and iterate upwards to the stack beginning.
+        /// Start from the stack's end and iterate upwards to the stack's beginning.
         ///
         /// # Safety
         ///
@@ -105,11 +105,11 @@ fn avr_estimate_unused_stack_space() -> u16 {
 /// The returned value is only an estimate.
 /// If the program code wrote [PATTERN] bytes to the stack, then
 /// these bytes will falsely be seen as unused.
-/// It is assumed that this scenario is unlikely to occur for more than a couple of bytes
+/// It is assumed that this scenario is unlikely to occur for more than a couple of bytes,
 /// and therefore the estimation is expected to be off by no more than a couple of bytes.
 ///
 /// This function does not protect against stack overflows.
-/// If an actual stack overflow occured, the behavior is undefined.
+/// If an actual stack overflow occurred, the behavior is undefined.
 #[inline(always)]
 pub fn estimate_unused_stack_space() -> u16 {
     #[cfg(target_arch = "avr")]
