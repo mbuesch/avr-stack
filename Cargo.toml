@@ -11,7 +11,7 @@ homepage = "https://bues.ch/"
 repository = "https://github.com/mbuesch/avr-stack"
 readme = "README.md"
 categories = [ "embedded", "hardware-support", "no-std" ]
-keywords = [ "avr", "stack" ]
+keywords = [ "avr", "stack", "memory", "allocation" ]
 
 [dependencies]
 

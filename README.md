@@ -53,3 +53,5 @@ This project is licensed under either:
 - MIT License ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
 
 at your option.
+
+Copyright (C) 2025 - 2026 Michael Büsch <m@bues.ch>

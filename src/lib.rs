@@ -1,6 +1,6 @@
 // -*- coding: utf-8 -*-
 // SPDX-License-Identifier: Apache-2.0 OR MIT
-// Copyright (C) 2025 Michael Büsch <m@bues.ch>
+// Copyright (C) 2025 - 2026 Michael Büsch <m@bues.ch>
 
 //! This crate provides helper functions for stack analysis on AVR.
 //!
@@ -111,7 +111,6 @@ fn avr_estimate_unused_stack_space() -> u16 {
 ///
 /// This function does not protect against stack overflows.
 /// If an actual stack overflow occurred, the behavior is undefined.
-#[inline(always)]
 pub fn estimate_unused_stack_space() -> u16 {
     #[cfg(target_arch = "avr")]
     let nrbytes = avr_estimate_unused_stack_space();
