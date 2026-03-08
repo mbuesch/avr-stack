@@ -1,4 +1,4 @@
-# AVR Stack
+# Stack analysis for AVR
 
 This crate provides helper functions for stack analysis on AVR microcontrollers.
 
